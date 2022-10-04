@@ -1,12 +1,15 @@
 const express = require('express')
 const mongoose = require('mongoose')
-require("dotenv").config()
+require('dotenv').config();
 const mqttRoutes = require("./routes/mqtt.js")
 const path = require("path")
 //Settings
 const app = express()
-const port = process.env.PORT || 9000 
+const port = process.env.PORT || 80
 
+const dotenv = require('dotenv')
+const URI = "mongodb+srv://pablocervantes:C3rv4nt3s@cluster0.cjsaps7.mongodb.net/?retryWrites=true&w=majority"
+dotenv.config({path:__dirname+'/.env'});
 // Swagger
 const swaggerUI = require("swagger-ui-express")
 const swaggerJsDoc = require("swagger-jsdoc")
@@ -40,8 +43,8 @@ app.get("/", (req, res) => {
 
 // mongodb
 mongoose
-.connect(process.env.MONGODB_URI)
+.connect(URI)
 .then(()=> console.log("MongoDB Atlas is ready!"))
 .catch((err) => console.error(err))
 app.listen(port, ()=> console.log('Port is ready! ons port', port))
-
+console.log(process.env.MONGODB_URI);
