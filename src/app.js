@@ -1,3 +1,4 @@
+const cors = require('cors')
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config();
@@ -6,6 +7,8 @@ const path = require("path")
 //Settings
 const app = express()
 const port = process.env.PORT || 80
+
+app.use(cors())
 
 const dotenv = require('dotenv')
 const URI = "mongodb+srv://pablocervantes:C3rv4nt3s@cluster0.cjsaps7.mongodb.net/?retryWrites=true&w=majority"
