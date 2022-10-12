@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 require('dotenv').config();
 const mqttRoutes = require("./routes/mqtt.js")
 const path = require("path")
@@ -7,12 +8,17 @@ const path = require("path")
 const app = express()
 const port = process.env.PORT || 80
 
+const whiteList = ['http://localhost:3000']
+
+app.use(cors({origin: whiteList}))
+
 const dotenv = require('dotenv')
 const URI = "mongodb+srv://pablocervantes:C3rv4nt3s@cluster0.cjsaps7.mongodb.net/?retryWrites=true&w=majority"
 dotenv.config({path:__dirname+'/.env'});
 // Swagger
 const swaggerUI = require("swagger-ui-express")
-const swaggerJsDoc = require("swagger-jsdoc")
+const swaggerJsDoc = require("swagger-jsdoc");
+const { appendFileSync } = require('fs');
 const swaggerSpec ={
     definition:{
         openapi: "3.0.3",
