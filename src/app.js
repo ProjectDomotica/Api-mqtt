@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = require('cors')
+const cors = require('cors') //aqui
 require('dotenv').config();
 const mqttRoutes = require("./routes/mqtt.js")
 const path = require("path")
@@ -8,9 +8,9 @@ const path = require("path")
 const app = express()
 const port = process.env.PORT || 80
 
-const whiteList = ['http://localhost:3000']
+const whiteList = ['http://localhost:3000', 'https://wizgpcbpmm.us-west-2.awsapprunner.com/api/data'] //aqui
 
-app.use(cors({origin: whiteList}))
+app.use(cors({origin: whiteList})) //Aqui
 
 const dotenv = require('dotenv')
 const URI = "mongodb+srv://pablocervantes:C3rv4nt3s@cluster0.cjsaps7.mongodb.net/?retryWrites=true&w=majority"
