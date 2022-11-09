@@ -8,7 +8,7 @@ const path = require("path")
 const app = express()
 const port = process.env.PORT || 80
 
-const whiteList = ['http://localhost:3000', 'https://wizgpcbpmm.us-west-2.awsapprunner.com/api/data'] //aqui
+const whiteList = ['http://localhost:3000', 'http://ec2-52-34-232-87.us-west-2.compute.amazonaws.com'] //aqui
 
 app.use(cors({origin: whiteList})) //Aqui
 
